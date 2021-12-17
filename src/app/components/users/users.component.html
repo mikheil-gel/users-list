@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-toolbar>
+    <span>{{ title }}</span>
+  </mat-toolbar>
+  <div class="content">
+    <mat-card
+      class="user-card"
+      *ngFor="let user of usersList"
+      [routerLink]="['/user', user.id]"
+    >
+      <mat-card-title-group class="title-group">
+        <mat-card-title>{{
+          user.prefix + " " + user.name + " " + user.lastName
+        }}</mat-card-title>
+        <mat-card-subtitle>{{ user.title }}</mat-card-subtitle>
+        <img
+          mat-card-xl-image
+          src="{{ user.imageUrl + '?v' + user.id }}"
+          alt="{{ user.prefix + ' ' + user.name + ' ' + user.lastName }}"
+        />
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+  <mat-progress-bar #bar mode="indeterminate"></mat-progress-bar>
+</div>

@@ -1,0 +1,72 @@
+<div class="container" *ngIf="user">
+  <mat-card class="user-card">
+    <div class="content">
+      <div class="header">
+        <mat-card-header>
+          <mat-card-title>{{
+            user.prefix + " " + user.name + " " + user.lastName
+          }}</mat-card-title>
+          <mat-card-subtitle>{{ user.title }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="{{ user.imageUrl + '?v' + user.id }}"
+          alt="{{ user.prefix + ' ' + user.name + ' ' + user.lastName }}"
+        />
+      </div>
+      <div class="info">
+        <h2>Job Information</h2>
+        <mat-card-content>
+          <p>
+            Company:
+            <span>{{ user.company.name + " " + user.company.suffix }}</span>
+          </p>
+          <p>Job</p>
+          <p>
+            Description: <span>{{ user.jobDescriptor }}</span>
+          </p>
+          <p>
+            Area: <span>{{ user.jobArea }}</span>
+          </p>
+          <p>
+            Type:
+            <span>{{ user.jobType }}</span>
+          </p>
+        </mat-card-content>
+
+        <h2 class="mt-1">Personal Information</h2>
+        <mat-card-content>
+          <p>
+            Email:
+            <span>{{ user.email }}</span>
+          </p>
+          <p>
+            City:
+            <span>{{
+              user.address.city +
+                "" +
+                " (" +
+                user.address.state +
+                ", " +
+                user.address.country +
+                ")"
+            }}</span>
+          </p>
+          <p>
+            Address:
+            <span>{{ user.address.streetAddress }}</span>
+          </p>
+          <p>
+            ZIP:
+            <span>{{ user.address.zipCode }}</span>
+          </p>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card>
+  <app-users
+    *ngIf="friendList"
+    title="Friends List"
+    [userId]="user.id"
+  ></app-users>
+</div>
